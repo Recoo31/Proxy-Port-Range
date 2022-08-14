@@ -1,0 +1,4 @@
+Put your proxy
+
+
+Proxies must be in this format: 192.168.0.50
