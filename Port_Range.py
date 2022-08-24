@@ -19,25 +19,25 @@ port2 = int(input("2. Port: "))+1
 
 class Recoo:
     def reco(self):
-        with open("iplist.txt", 'r') as superim:
+        with open("iplist.txt", 'r') as superim: ## Read list ##
             x = len(superim.readlines())
-            if x > 0:
+            if x > 0: ##Check list##
                     i = open("iplist.txt", "r")
                     ipi = i.readline().rstrip('\n')
                     lines = i.readlines()
-                    ip =ipi+':'
+                    ip =ipi+':'   ## Add ":"(192.168.1.1 -> 192.168.1.1:) ##
                     a = open("İp.txt","a")
                     for x in range(port1,port2):
-                        reco=ip+str(x)+'\n'
-                        a.write(reco)
-                    with open("iplist.txt", "w") as f:
+                        reco=ip+str(x)+'\n' 
+                        a.write(reco) 
+                    with open("iplist.txt", "w") as f: ## Open list ##
                         for line in lines:
-                            if line.strip("\n") != "%s" % (ipi,):
-                                f.write(line)
+                            if line.strip("\n") != "%s" % (ipi,): 
+                                f.write(line) ## Delete the first line ##
                     a.close()
-                    return self.reco()
+                    return self.reco() 
 
-            else:
+            else:  ## If list empty ##
                 print("Iplist boş")
                 print("Iplist boş")
                 print("Iplist boş")
@@ -47,5 +47,5 @@ class Recoo:
                 exit()
 
 
-Recoo().reco()
+Recoo().reco() ## Run function ##
 
