@@ -1,5 +1,3 @@
-import time
-
 print(""" 
                                                 (                    
                                                 )\ )                 
@@ -14,38 +12,19 @@ print("                                                discord.gg/Xd8VfYPHB3")
 
 
 
-port1 = int(input("1. Port: "))
-port2 = int(input("2. Port: "))+1
+def reco():
+    with open('proxy.txt', 'r') as f: # 'proxy.txt' dosyasını okuyoruz
+        ip_list = f.readlines() # Her bir IP adresini bir liste halinde alıyoruz
 
-class Recoo:
-    def reco(self):
-        with open("iplist.txt", 'r') as superim: ## Read list ##
-            x = len(superim.readlines())
-            if x > 0: ##Check list##
-                    i = open("iplist.txt", "r")
-                    ipi = i.readline().rstrip('\n')
-                    lines = i.readlines()
-                    ip =ipi+':'   ## Add ":"(192.168.1.1 -> 192.168.1.1:) ##
-                    a = open("İp.txt","a")
-                    for x in range(port1,port2):
-                        reco=ip+str(x)+'\n' 
-                        a.write(reco) 
-                    with open("iplist.txt", "w") as f: ## Open list ##
-                        for line in lines:
-                            if line.strip("\n") != "%s" % (ipi,): 
-                                f.write(line) ## Delete the first line ##
-                    a.close()
-                    return self.reco() 
+        start = int(input("1. Port: "))
+        end = int(input("2. Port: "))+1
 
-            else:  ## If list empty ##
-                print("Iplist boş")
-                print("Iplist boş")
-                print("Iplist boş")
-                print("Iplist boş")
-                print("Iplist boş")
-                time.sleep(1)
-                exit()
+    with open('output.txt', 'w') as f: # 'output.txt' dosyasını yazmak için açıyoruz
+        for ip in ip_list:
+            ip = ip.strip() # Her bir IP adresini alıyoruz ve gereksiz boşlukları temizliyoruz
+            for i in range(start, end+1):
+                new_ip = ip + ":" + str(i) + "\n" # Her bir IP adresine numara ekliyoruz
+                f.write(new_ip) # IP adresini 'output.txt' dosyasına yazıyoruz
 
-
-Recoo().reco() ## Run function ##
+reco()
 
